@@ -6,3 +6,6 @@ CRUD desarrollado como proyecto académico para la gestión de destino, paquetes
 - Java
 - Spring Boot
 - MySQL
+
+## Desarrollado por
+  Antonio Benitez Lopez
