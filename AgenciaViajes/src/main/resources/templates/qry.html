@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Page Title</title>
+
+<link rel="stylesheet" type="text/css" href="./tools/bootstrap-5.3.5-dist/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="./tools/bootstrap-5.3.5-dist/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/estilos.css}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+	<!------------>
+    <div class="container mt-4">
+		<div class="row">
+			<div class="col-12">
+				<p class="h1 mt-1 mb-2 text-primar text-center titulo"><b>Agencia de Viajes</b>
+					<img src="/tools/images/avion.png" width="70px" height="70px">	
+				</p>	
+				<p class="h2 mt-2 mb-4 subtitulo"><b>Destinos</b></p>	
+			</div>
+			<!--
+			<div class="col-12">
+				<p class="h5 mt-1 mb-4">Buscar</p>	
+			</div> -->
+			<div class="col-12">
+				<form id="fnd" th:action="@{/fnd}" th:method="get" th:object="${destino}">
+					<div class="row mb-3">
+						<div class="col-2 d-flex justify-content-center align-items-end">
+							<label for="txtId" class="form-label">Id destino</label>
+						</div>
+						<div class="col-10">
+							<input type="text"
+							       class="form-control border-2 border-primary rounded-3 shadow-md px-3 py-2"
+							       id="txtId"
+							       name="id"
+							       th:field="*{id}"
+							       placeholder="Ingrese ID del destino">
+
+						</div>
+					</div>
+					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+						<button type="submit" class="btn btn-primary">Buscar</button>
+						<a href="/" class="btn btn-primary">Cancelar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				<button type="button" class="btn btn-outline-primary border border-2 border-primary" onclick="addDestino()">
+					<img  src="/tools/images/documento.png" width="20px" height="20px" >
+				</button>
+				<button type="button" class="btn btn-outline-success border border-2 border-success" onclick="updDestino()">
+					<img src="/tools/images/editar.png" width="20px" height="20px" >
+				</button>
+				<button type="button" class="btn btn-outline-danger border border-2 border-danger" onclick="delDestino()">
+					<img  src="/tools/images/eliminar.png" width="20px" height="20px" >
+				</button>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-hover mt-4">
+				  <thead>
+				    <tr>
+				      <th class="text-center" scope="col">#</th>
+				      <th scope="col">Ciudad</th>
+				      <th scope="col">Pais</th>
+					  <th scope="col">Precio base</th>
+				    </tr>
+				  </thead>
+				  <tbody class="table-group-divider ">
+					<tr th:if="${destinoList == null or destinoList.empty}">
+				      <td colspan="3">La lista de estudiantes esta vacia</td>
+				    </tr>
+					<tr th:each="dest : ${destinoList}">
+						<td scope="row">
+							<div class="form-check d-flex justify-content-center">
+								<input class="form-check-input border border-secondary" 
+								type="radio" name="chkId" th:id="'chkId' + 
+								 ${dest.id}" th:value="${dest.id}">
+							</div>	
+						</td>
+						<td th:text="${dest.ciudad}">Ciudad</td>
+						<td th:text="${dest.pais}">Pais</td>
+						<td th:text="${dest.precio_base}">Precio base</td>
+					</tr>
+				  </tbody>		  
+				</table>
+			</div>
+		</div>		
+	</div>
+		
+
+	
+	
+	
+	
+<script src="./tools/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js" ></script>	
+<script src="../js/destino/qry.js"></script>
+
+</body>
+</html>

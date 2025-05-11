@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" type="text/css" href="./tools/bootstrap-5.3.5-dist/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="./tools/bootstrap-5.3.5-dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+</head>
+<body>
+	
+	<div class="container">
+		<form class="mt-2 mx-auto w-50 mb-4" th:action="@{/create}" method="post" th:object="${paquete}">
+			<div class="mb-3 text-center">
+				<label for="txtPaquetes" class="form-label h3  text-primary">Nuevo paquete</label>
+			</div>
+			<div class="mb-3">
+		        <label for="txtId" class="form-label">Id</label>
+		        <textarea type="text" class="form-control" id="txtId" name="id" th:field="*{id}" rows="1"></textarea>
+		    </div>
+			<div class="mb-3">
+		        <label for="txtNombre" class="form-label">Nombre</label>
+		        <textarea type="text" class="form-control" id="txtNombre" name="nombre" th:field="*{nombre}" rows="1"></textarea>
+			</div>
+			<div class="mb-3">
+		        <label for="txtDestino_Id" class="form-label">Id destino</label>
+		        <textarea type="text" class="form-control" id="txtDestino_Id" name="destino_id" th:field="*{destino_id}" rows="1"></textarea>
+		    </div>
+			<div class="mb-3">
+		        <label for="txtDuracion_Dias" class="form-label">Duracion dias</label>
+		        <textarea type="text" class="form-control" id="txtDuracion_Dias" name="duracion_dias" th:field="*{duracion_dias}" rows="1"></textarea>
+		    </div>
+			<div class="mb-3">
+		        <label for="txtPrecio" class="form-label">Precio</label>
+		        <textarea type="text" class="form-control" id="txtPrecio" name="precio" th:field="*{precio}" rows="1"></textarea>
+		    </div>
+			<div class="d-grip gap-2 d-md-flex justify-content-md-end">
+				<button type="submit" class="btn btn-outline-success border border-2 border-success">
+					<img src="/tools/images/guardar.png" width="20px" height="20px">
+				</button>
+				<a href="/" class="btn btn-outline-warning border border-2 border-warning">
+					<img src="/tools/images/atras.png" width="20px" height="20px">
+				</a>
+			</div>
+			
+		</form>
+	</div>
+
+	
+<script src="./tools/bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js" ></script>	
+</body>
+</html>
